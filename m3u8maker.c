@@ -21,8 +21,17 @@
 #include <unistd.h>
 #include <sys/time.h>
 #include <sys/timeb.h>
-
-#include "libavformat/avformat.h"
+#ifndef INT64_C
+#define INT64_C(c) (c ## LL)
+#define UINT64_C(c) (c ## ULL)
+#endif
+#ifdef __cplusplus
+extern "C" {
+#endif
+#include <libavformat/avformat.h>
+#ifdef __cplusplus
+}
+#endif
 
 
 static void initializeAvContext(AVFormatContext *input_context,
